@@ -1,34 +1,29 @@
 #pragma once
 #include <cmath>
-namespace vecmatlib {
-	class vec2 {
-	  private:
-		double x, y;
 
-	  public:
-		vec2( double x_, double y_ ) : x( x_ ), y( y_ ) {}
+namespace VecMatLib {
+    class vec2 {
+    private:
 
-		double magnitude() const;
+    public:
+        const double x, y;
 
-		double distance( const vec2& v ) const;
+        vec2( double x_, double y_ ) : x(x_), y(y_) {
+        }
 
-		vec2 normal() const;
-		vec2& normalize();
+        [[nodiscard]] double magnitude() const;
 
-		double dot( const vec2& v );
-		double cross(const vec2& v);
+        [[nodiscard]] double distance( const vec2& v ) const;
 
-		double getX() const { return x; }
-		double getY() const { return y; }
+        [[nodiscard]] vec2 normal() const;
 
-		vec2 operator+( const vec2& other ) const;
-		vec2 operator-( const vec2& other ) const;
-		vec2 operator*( double s ) const;
-		vec2 operator/( double s ) const;
+        [[nodiscard]] double dot( const vec2& v ) const;
+        [[nodiscard]] double cross( const vec2& v ) const;
 
-		vec2& operator+=( const vec2& other );
-		vec2& operator-=( const vec2& other );
-		vec2& operator*=( const double s );
-		vec2& operator/=( const double s );
-	};
+        vec2 operator+( const vec2& other ) const;
+        vec2 operator-( const vec2& other ) const;
+        vec2 operator*( double s ) const;
+        vec2 operator/( double s ) const;
+        bool operator==( const vec2& v ) const;
+    };
 } // namespace vecmatlib
