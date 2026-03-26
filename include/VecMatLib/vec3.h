@@ -5,12 +5,13 @@
 #ifndef VECMATLIB_VEC3_H
 #define VECMATLIB_VEC3_H
 
-namespace vecmatlib {
+namespace VecMatLib {
     class vec3 {
     private:
-        double x, y, z;
+
 
     public:
+        const double x, y, z;
         vec3( double x, double y, double z ) : x( x ), y( y ), z( z ) {}
         vec3() : x( 0 ), y( 0 ), z( 0 ) {}
 
@@ -19,17 +20,11 @@ namespace vecmatlib {
         vec3 cross( const vec3& v ) const;
 
         vec3 normal() const;
-        vec3& normalize();
 
         vec3 operator-( const vec3& v ) const;
         vec3 operator+( const vec3& v ) const;
         vec3 operator*( double s ) const;
         vec3 operator/( double s ) const;
-
-        vec3& operator+=( const vec3& v );
-        vec3& operator-=( const vec3& v );
-        vec3& operator*=( double s );
-        vec3& operator/=( double s );
     };
 } // namespace vecmatlib
 
