@@ -9,6 +9,7 @@ add_library(VecMatLib
         src/vec3.cpp
         src/Mat2.cpp
         src/Transform2.cpp
+        src/Mat3.cpp
 )
 
 target_include_directories(VecMatLib PUBLIC include)
@@ -18,6 +19,8 @@ add_executable(tests
         tests/vec2Test.cpp
         tests/vec3Test.cpp
         tests/Mat2Tests.cpp
+        tests/Transform2Tests.cpp
+        tests/Mat3Tests.cpp
 )
 
 target_link_libraries(tests VecMatLib)

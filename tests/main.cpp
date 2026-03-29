@@ -2,15 +2,20 @@
 // Created by chice on 3/23/2026.
 //
 
-#include<iostream>
+#include <iostream>
 
 void runVec2Tests();
 void runVec3Tests();
 void runMat2Tests();
+void runTransform2Tests();
+void runMat3Tests();
 
 int main() {
-    runVec2Tests();
-    runVec3Tests();
-    runMat2Tests();
-    return 0;
+  runVec2Tests();
+  runVec3Tests();
+  runMat2Tests();
+  runTransform2Tests();
+  runMat3Tests();
+
+  return 0;
 }
