@@ -34,4 +34,21 @@ double distance(const Vec& a, const Vec& b) {
   Vec ab = a - b;
   return ab.magnitude();
 }
+
+template <typename Vec>
+requires requires(Vec a, Vec b, double s)
+{
+  { a.dot(b)} -> std::convertible_to<double>;
+  { b * s} -> std::same_as<Vec>;
+}
+Vec project(const Vec& a, const Vec& b) {
+  double ab = a.dot(b);
+  double bb = b.dot(b);
+
+  if (bb == 0) {
+    return Vec{0,0};
+  }
+
+  return b * (ab/bb);
+}
 }  // namespace VecMatLib
