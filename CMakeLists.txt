@@ -10,6 +10,7 @@ add_library(VecMatLib
         src/Mat2.cpp
         src/Transform2.cpp
         src/Mat3.cpp
+        src/Transform3.cpp
 )
 
 target_include_directories(VecMatLib PUBLIC include)
