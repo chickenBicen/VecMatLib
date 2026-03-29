@@ -4,34 +4,48 @@
 
 #ifndef VECMATLIB_MAT2_H
 #define VECMATLIB_MAT2_H
-#include "../VecMatLib/vec2.h"
+#include "../VecMatLib/Vec2.h"
 
 namespace VecMatLib {
-    class Mat2 {
-    private:
+class Mat2 {
+ private:
+ public:
+  double mat_[2][2];
 
-    public:
-        const double a, b, c, d;
+  Mat2(double m00, double m01, double m10, double m11) {
+    mat_[0][0] = m00;
+    mat_[0][1] = m01;
+    mat_[1][0] = m10;
+    mat_[1][1] = m11;
+  }
 
-        Mat2( double a, double b, double c, double d ) : a(a), b(b), c(c), d(d) {
-        }
+  Mat2() {
+    mat_[0][0] = 1;
+    mat_[0][1] = 0;
+    mat_[1][0] = 0;
+    mat_[1][1] = 1;
+  }
 
-        Mat2() : a(1), b(0), c(0), d(1) {
-        }
+  Mat2(double mat[4]) {
+    mat_[0][0] = mat[0];
+    mat_[0][1] = mat[1];
+    mat_[1][0] = mat[2];
+    mat_[1][1] = mat[3];
+  }
 
-        double det() const;
+  [[nodiscard]] double det() const;
 
-        Mat2 inversed() const;
+  [[nodiscard]] Mat2 inversed() const;
 
-        Mat2 transposed() const;
+  [[nodiscard]] Mat2 transposed() const;
 
-        Mat2 operator+( const Mat2& m ) const;
-        Mat2 operator-( const Mat2& m ) const;
-        Mat2 operator*( const Mat2& m ) const;
-        vec2 operator*( const vec2& v ) const;
-        Mat2 operator*( double s ) const;
-        bool operator==( const Mat2& m ) const;
-    };
-} // VecMatLib
+  Mat2 operator+(const Mat2& m) const;
+  Mat2 operator-(const Mat2& m) const;
+  Mat2 operator*(const Mat2& m) const;
+  Vec2 operator*(const Vec2& v) const;
+  Mat2 operator*(double s) const;
+  bool operator==(const Mat2& m) const;
+};
+}  // namespace VecMatLib
 
-#endif //VECMATLIB_MAT2_H
+#endif  // VECMATLIB_MAT2_H
