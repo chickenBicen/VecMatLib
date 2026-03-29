@@ -4,13 +4,15 @@
 
 #ifndef VECMATLIB_MAT2_H
 #define VECMATLIB_MAT2_H
+#include <array>
+
 #include "../VecMatLib/Vec2.h"
 
 namespace VecMatLib {
 class Mat2 {
  private:
  public:
-  double mat_[2][2];
+  std::array<std::array<double, 2>, 2> mat_;
 
   Mat2(double m00, double m01, double m10, double m11) {
     mat_[0][0] = m00;
