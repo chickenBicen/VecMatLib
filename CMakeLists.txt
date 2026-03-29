@@ -22,6 +22,7 @@ add_executable(tests
         tests/Mat2Tests.cpp
         tests/Transform2Tests.cpp
         tests/Mat3Tests.cpp
+        tests/Transform3Tests.cpp
 )
 
 target_link_libraries(tests VecMatLib)
