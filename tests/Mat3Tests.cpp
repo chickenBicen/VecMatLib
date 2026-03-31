@@ -71,5 +71,5 @@ void runMat3Tests() {
   runTest("Mat3 inverse test", testInverse);
   runTest("Mat3 multiplication test", testMultiplication);
 
-  std::cout << "Tests passed" << "\n";
+  std::cout << "Tests passed\n\n";
 }

@@ -5,38 +5,44 @@
 #ifndef VECMATLIB_TRANSFORM3_H
 #define VECMATLIB_TRANSFORM3_H
 #include "Mat3.h"
+#include "Quaternion.h"
 
 namespace VecMatLib {
 
 class Transform3 {
-private:
-  Mat3 mat3_;
+ private:
+  Vec3 scale_;
   Vec3 translation_;
-public:
+  Quaternion rotation_;
+
+ public:
   Transform3() {
-    mat3_ = Mat3();
-    translation_ = Vec3(0,0,0);
+    scale_ = Vec3(1, 1, 1);
+    translation_ = Vec3(0, 0, 0);
+    rotation_ = Quaternion();
   }
   Transform3(const Mat3& mat3, const Vec3& translation) {
-    mat3_ = mat3;
+    scale_ = Vec3(1, 1, 1);
     translation_ = translation;
+    rotation_ = Quaternion();
   }
 
-  static Transform3 identity();
-  static Transform3 translation(const Vec3& translation);
-  static Transform3 scaling(const Vec3& scale);
-  static Transform3 rotation(const Vec3& axis, const double angle);
+  static Quaternion rotation(const Vec3& axis, const double angle);
 
   Transform3& translate(const Vec3& translation);
   Transform3& scale(const Vec3& scale);
   Transform3& rotate(const Vec3& axis, const double angle);
 
-  void orthonormalize();
+  Transform3& combine(const Transform3& other);
 
-  double rotationInX()const;
-  double rotationInY()const;
-  double rotationInZ()const;
+  Vec3 getTranslation() { return translation_; }
 
+  Vec3 getScale() { return scale_; }
+
+  Quaternion getRotation() { return rotation_; }
+
+  Transform3 operator*(const Transform3& other) const;
+  Vec3 operator*(const Vec3& v) const;
 };
 
 }  // namespace VecMatLib

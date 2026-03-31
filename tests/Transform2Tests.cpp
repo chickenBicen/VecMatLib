@@ -51,7 +51,7 @@ void testOrder() {
   translate.translate({1, 0});
 
   VecMatLib::Transform2 rotate;
-  rotate.rotate(M_PI / 2);
+  rotate.rotate(std::numbers::pi / 2);
 
   VecMatLib::Vec2 v(1, 0);
 

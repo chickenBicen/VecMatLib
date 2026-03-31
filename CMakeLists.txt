@@ -11,6 +11,7 @@ add_library(VecMatLib
         src/Transform2.cpp
         src/Mat3.cpp
         src/Transform3.cpp
+        src/Quaternion.cpp
 )
 
 target_include_directories(VecMatLib PUBLIC include)
@@ -23,6 +24,7 @@ add_executable(tests
         tests/Transform2Tests.cpp
         tests/Mat3Tests.cpp
         tests/Transform3Tests.cpp
+
 )
 
 target_link_libraries(tests VecMatLib)

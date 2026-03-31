@@ -6,7 +6,7 @@
 
 using namespace VecMatLib;
 
-constexpr double EPS = 1e-6;
+constexpr double EPS = 1e-9;
 
 void runTest(const char* name, void (*testFunc)()) {
   std::cout << "Running " << name << "...";

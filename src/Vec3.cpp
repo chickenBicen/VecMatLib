@@ -27,10 +27,10 @@ Vec3 Vec3::operator-(const Vec3& other) const {
   return {x - other.x, y - other.y, z - other.z};
 }
 Vec3 Vec3::operator*(double s) const { return {x * s, y * s, z * s}; }
-Vec3 Vec3::operator/(double s) const { return {x / s, y / s, y / s}; }
+Vec3 Vec3::operator/(double s) const { return {x / s, y / s, z / s}; }
 
 bool Vec3::operator==(const Vec3& other) const {
-  return (std::abs(x - other.x) < 1e-6 && std::abs(y - other.x) < 1e-6 &&
+  return (std::abs(x - other.x) < 1e-6 && std::abs(y - other.y) < 1e-6 &&
           std::abs(z - other.z) < 1e-6);
 }
 }  // namespace VecMatLib
