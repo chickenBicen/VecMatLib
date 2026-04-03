@@ -41,6 +41,11 @@ class Mat3 {
     mat_[2][2] = mat[8];
   }
 
+  static Mat3 identity() {
+    Mat3 mat(1,0,0,0,1,0,0,0,1);
+    return mat;
+  }
+
   Mat3() = default;
 
   double det() const;

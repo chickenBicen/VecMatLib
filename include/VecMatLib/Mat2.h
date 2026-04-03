@@ -36,6 +36,11 @@ class Mat2 {
     mat_[1][1] = mat[3];
   }
 
+  static Mat2 identity() {
+    Mat2 m;
+    return m;
+  }
+
   [[nodiscard]] double det() const;
 
   [[nodiscard]] Mat2 inversed() const;
