@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+#include <numbers>
 
 namespace VecMatLib {
 class Vec2 {

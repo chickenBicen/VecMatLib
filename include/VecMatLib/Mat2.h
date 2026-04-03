@@ -5,6 +5,7 @@
 #ifndef VECMATLIB_MAT2_H
 #define VECMATLIB_MAT2_H
 #include <array>
+#include <numbers>
 
 #include "../VecMatLib/Vec2.h"
 

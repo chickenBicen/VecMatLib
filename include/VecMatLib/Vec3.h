@@ -5,6 +5,8 @@
 #ifndef VECMATLIB_VEC3_H
 #define VECMATLIB_VEC3_H
 
+#include <numbers>
+
 namespace VecMatLib {
 class Vec3 {
  public:

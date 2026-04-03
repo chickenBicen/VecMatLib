@@ -5,6 +5,7 @@
 #ifndef VECMATLIB_TRANSFORM2_H
 #define VECMATLIB_TRANSFORM2_H
 #include "Mat2.h"
+#include <numbers>
 
 namespace VecMatLib {
 class Transform2 {

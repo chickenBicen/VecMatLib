@@ -1,6 +1,7 @@
 #pragma once
 #include <algorithm>
 #include <cmath>
+#include <numbers>
 
 #include "Vec2.h"
 #include "Vec3.h"

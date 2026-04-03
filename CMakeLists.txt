@@ -3,6 +3,7 @@ project(VecMatLib)
 
 set(CMAKE_CXX_STANDARD 20)
 
+
 add_library(VecMatLib
         src/vec2.cpp
         src/utils.cpp
@@ -14,7 +15,28 @@ add_library(VecMatLib
         src/Quaternion.cpp
 )
 
-target_include_directories(VecMatLib PUBLIC include)
+target_include_directories(VecMatLib
+        PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+)
+
+install(TARGETS VecMatLib
+        EXPORT VecMatLibTargets
+        ARCHIVE DESTINATION lib
+        LIBRARY DESTINATION lib
+        RUNTIME DESTINATION bin
+)
+
+install(DIRECTORY include/
+        DESTINATION include
+)
+
+install(EXPORT VecMatLibTargets
+        FILE VecMatLibTargets.cmake
+        NAMESPACE VecMatLib::
+        DESTINATION lib/cmake/VecMatLib
+)
 
 add_executable(tests
         tests/main.cpp
@@ -28,3 +50,5 @@ add_executable(tests
 )
 
 target_link_libraries(tests VecMatLib)
+
+

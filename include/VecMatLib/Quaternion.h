@@ -5,6 +5,7 @@
 #ifndef VECMATLIB_QUATERNION_H
 #define VECMATLIB_QUATERNION_H
 #include <complex>
+#include <numbers>
 
 #include "Vec3.h"
 

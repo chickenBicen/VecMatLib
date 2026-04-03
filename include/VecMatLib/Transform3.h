@@ -6,6 +6,7 @@
 #define VECMATLIB_TRANSFORM3_H
 #include "Mat3.h"
 #include "Quaternion.h"
+#include <numbers>
 
 namespace VecMatLib {
 
