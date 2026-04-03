@@ -8,6 +8,7 @@ class Vec2 {
   double x, y;
 
   Vec2(double x_, double y_) : x(x_), y(y_) {}
+  Vec2() : x(0), y(0) {}
 
   [[nodiscard]] double magnitude() const;
 
