@@ -1,34 +1,57 @@
 #include "../include/VecMatLib/Vec2.h"
 
-#include "../include/VecMatLib/utils.h"
+#include <cmath>
 
 namespace VecMatLib {
-double Vec2::magnitude() const { return std::sqrt(x * x + y * y); }
 
-double Vec2::distance(const Vec2& v) const {
-  return VecMatLib::magnitude(v - *this);
+template <typename T>
+T Vec2<T>::magnitude() const {
+  return std::sqrt(x * x + y * y);
 }
 
-Vec2 Vec2::normal() const {
-  if (x == 0 && y == 0) return {0.0, 0.0};
-  return {x / magnitude(), y / magnitude()};
+template <typename T>
+T Vec2<T>::distance(const Vec2& v) const {
+  return (*this - v).magnitude();
 }
 
-double Vec2::dot(const Vec2& v) const { return x * v.x + y * v.y; }
-double Vec2::cross(const Vec2& v) const { return x * v.y - y * v.x; }
+template <typename T>
+Vec2<T> Vec2<T>::normal() const {
+  if (x == T(0) && y == T(0)) return {T(0), T(0)};
+  T mag = magnitude();
+  return {x / mag, y / mag};
+}
 
-Vec2 Vec2::operator+(const Vec2& other) const {
+template <typename T>
+T Vec2<T>::dot(const Vec2& v) const {
+  return x * v.x + y * v.y;
+}
+
+template <typename T>
+T Vec2<T>::cross(const Vec2& v) const {
+  return x * v.y - y * v.x;
+}
+
+template <typename T>
+Vec2<T> Vec2<T>::operator+(const Vec2& other) const {
   return {x + other.x, y + other.y};
 }
-Vec2 Vec2::operator-(const Vec2& other) const {
+
+template <typename T>
+Vec2<T> Vec2<T>::operator-(const Vec2& other) const {
   return {x - other.x, y - other.y};
 }
-Vec2 Vec2::operator*(double s) const { return {x * s, y * s}; }
 
-Vec2 Vec2::operator/(double s) const { return {x / s, y / s}; }
-
-bool Vec2::operator==(const Vec2& v) const {
-  const double eps = 1e-6;
-  return std::abs(x - v.x) < eps && std::abs(y - v.y) < eps;
+template <typename T>
+Vec2<T> Vec2<T>::operator*(T s) const {
+  return {x * s, y * s};
 }
+
+template <typename T>
+Vec2<T> Vec2<T>::operator/(T s) const {
+  return {x / s, y / s};
+}
+
+template class Vec2<float>;
+template class Vec2<double>;
+
 }  // namespace VecMatLib

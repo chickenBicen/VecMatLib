@@ -10,6 +10,7 @@ void runMat2Tests();
 void runTransform2Tests();
 void runMat3Tests();
 void runTransform3Tests();
+void runUtilitiesTests();
 
 int main() {
   runVec2Tests();
@@ -18,6 +19,7 @@ int main() {
   runTransform2Tests();
   runMat3Tests();
   runTransform3Tests();
+  runUtilitiesTests();
 
   std::cout << "All tests passed!! HOOOOORRRRAAAAYYYYY\n\n";
 

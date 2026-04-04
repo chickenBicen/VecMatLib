@@ -6,22 +6,23 @@
 
 #include "VecMatLib/Mat2.h"
 
-using namespace VecMatLib;
-
-double Mat3::det() const {
-  double term1 =
+namespace VecMatLib {
+template <typename T>
+T Mat3<T>::det() const {
+  T term1 =
       (Mat2(mat_[1][1], mat_[1][2], mat_[2][1], mat_[2][2]).det()) * mat_[0][0];
-  double term2 =
+  T term2 =
       (Mat2(mat_[1][0], mat_[1][2], mat_[2][0], mat_[2][2]).det()) * mat_[0][1];
-  double term3 =
+  T term3 =
       (Mat2(mat_[1][0], mat_[1][1], mat_[2][0], mat_[2][1]).det()) * mat_[0][2];
 
   return term1 - term2 + term3;
 }
 
-Mat2 Mat3::subMatrix(int row, int col) const {
+template <typename T>
+Mat2<T> Mat3<T>::subMatrix(int row, int col) const {
   int i = 0;
-  double arr[4];
+  T arr[4];
   for (int r = 0; r < 3; r++) {
     if (r == row) {
       continue;
@@ -37,14 +38,19 @@ Mat2 Mat3::subMatrix(int row, int col) const {
   return Mat2(arr);
 }
 
-double Mat3::minor(int row, int col) const { return subMatrix(row, col).det(); }
-
-double Mat3::cofactor(int row, int col) const {
-  return std::pow(-1, row + col) * minor(row, col);
+template <typename T>
+T Mat3<T>::minor(int row, int col) const {
+  return subMatrix(row, col).det();
 }
 
-Mat3 Mat3::cofactorMatrix() const {
-  std::array<std::array<double, 3>, 3> arr;
+template <typename T>
+T Mat3<T>::cofactor(int row, int col) const {
+  return ((row + col) % 2 == 0 ? T(1) : T(-1)) * minor(row, col);
+}
+
+template <typename T>
+Mat3<T> Mat3<T>::cofactorMatrix() const {
+  std::array<std::array<T, 3>, 3> arr;
   for (int r = 0; r < 3; r++) {
     for (int c = 0; c < 3; c++) {
       arr[r][c] = cofactor(r, c);
@@ -54,21 +60,36 @@ Mat3 Mat3::cofactorMatrix() const {
   return Mat3(arr);
 }
 
-Mat3 Mat3::transposed() const {
+template <typename T>
+Mat3<T> Mat3<T>::transposed() const {
   return {
       mat_[0][0], mat_[1][0], mat_[2][0], mat_[0][1], mat_[1][1],
       mat_[2][1], mat_[0][2], mat_[1][2], mat_[2][2],
   };
 }
 
-Mat3 Mat3::adjoint() const { return cofactorMatrix().transposed(); }
+template <typename T>
+Mat3<T> Mat3<T>::adjoint() const {
+  return cofactorMatrix().transposed();
+}
 
-Mat3 Mat3::inversed() const { return adjoint() * (1 / det()); }
+template <typename T>
+Mat3<T> Mat3<T>::inversed() const {
+  return adjoint() * (1 / det());
+}
 
-Vec3 Mat3::row(int i) const { return {mat_[i][0], mat_[i][1], mat_[i][2]}; }
-Vec3 Mat3::col(int i) const { return {mat_[0][i], mat_[1][i], mat_[2][i]}; }
+template <typename T>
+Vec3<T> Mat3<T>::row(int i) const {
+  return {mat_[i][0], mat_[i][1], mat_[i][2]};
+}
 
-Mat3 Mat3::operator*(const Mat3& other) const {
+template <typename T>
+Vec3<T> Mat3<T>::col(int i) const {
+  return {mat_[0][i], mat_[1][i], mat_[2][i]};
+}
+
+template <typename T>
+Mat3<T> Mat3<T>::operator*(const Mat3& other) const {
   Mat3 C{};
 
   for (int i = 0; i < 3; ++i) {
@@ -88,19 +109,22 @@ Mat3 Mat3::operator*(const Mat3& other) const {
   return C;
 }
 
-Vec3 Mat3::operator*(const Vec3& v) const {
+template <typename T>
+Vec3<T> Mat3<T>::operator*(const Vec3<T>& v) const {
   return {mat_[0][0] * v.x + mat_[0][1] * v.y + mat_[0][2] * v.z,
           mat_[1][0] * v.x + mat_[1][1] * v.y + mat_[1][2] * v.z,
           mat_[2][0] * v.x + mat_[2][1] * v.y + mat_[2][2] * v.z};
 }
 
-Mat3 Mat3::operator*(const double scalar) const {
+template <typename T>
+Mat3<T> Mat3<T>::operator*(const T scalar) const {
   return Mat3{mat_[0][0] * scalar, mat_[0][1] * scalar, mat_[0][2] * scalar,
               mat_[1][0] * scalar, mat_[1][1] * scalar, mat_[1][2] * scalar,
               mat_[2][0] * scalar, mat_[2][1] * scalar, mat_[2][2] * scalar};
 }
 
-Mat3 Mat3::operator/(double scalar) const {
+template <typename T>
+Mat3<T> Mat3<T>::operator/(T scalar) const {
   return Mat3{
       mat_[0][0] / scalar, mat_[0][1] / scalar, mat_[0][2] / scalar,
       mat_[1][0] / scalar, mat_[1][1] / scalar, mat_[1][2] / scalar,
@@ -108,4 +132,16 @@ Mat3 Mat3::operator/(double scalar) const {
   };
 }
 
-bool Mat3::operator==(const Mat3& other) const { return (mat_ == other.mat_); }
+template <typename T>
+bool Mat3<T>::operator==(const Mat3& other) const {
+  constexpr T eps = std::is_same_v<T, float> ? 1e-6f : 1e-12;
+  for (int r = 0; r < 3; ++r)
+    for (int c = 0; c < 3; ++c)
+      if (std::abs(mat_[r][c] - other.mat_[r][c]) > eps) return false;
+  return true;
+}
+
+template class Mat3<double>;
+template class Mat3<float>;
+
+}  // namespace VecMatLib

@@ -6,31 +6,56 @@
 #include <cmath>
 
 namespace VecMatLib {
-double Vec3::magnitude() const { return std::sqrt(x * x + y * y + z * z); }
-double Vec3::dot(const Vec3& v) const { return x * v.x + y * v.y + z * v.z; }
 
-Vec3 Vec3::cross(const Vec3& v) const {
+template <typename T>
+T Vec3<T>::magnitude() const {
+  return std::sqrt(x * x + y * y + z * z);
+}
+
+template <typename T>
+T Vec3<T>::dot(const Vec3& v) const {
+  return x * v.x + y * v.y + z * v.z;
+}
+
+template <typename T>
+Vec3<T> Vec3<T>::cross(const Vec3& v) const {
   return {y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x};
 }
 
-Vec3 Vec3::normal() const {
-  if (x == 0 && y == 0 && z == 0) {
+template <typename T>
+Vec3<T> Vec3<T>::normal() const {
+  if (x == T(0) && y == T(0) && z == T(0)) {
     return *this;
   }
   return {x / magnitude(), y / magnitude(), z / magnitude()};
 }
 
-Vec3 Vec3::operator+(const Vec3& other) const {
+template <typename T>
+Vec3<T> Vec3<T>::operator+(const Vec3& other) const {
   return {x + other.x, y + other.y, z + other.z};
 }
-Vec3 Vec3::operator-(const Vec3& other) const {
+
+template <typename T>
+Vec3<T> Vec3<T>::operator-(const Vec3& other) const {
   return {x - other.x, y - other.y, z - other.z};
 }
-Vec3 Vec3::operator*(double s) const { return {x * s, y * s, z * s}; }
-Vec3 Vec3::operator/(double s) const { return {x / s, y / s, z / s}; }
-
-bool Vec3::operator==(const Vec3& other) const {
-  return (std::abs(x - other.x) < 1e-6 && std::abs(y - other.y) < 1e-6 &&
-          std::abs(z - other.z) < 1e-6);
+template <typename T>
+Vec3<T> Vec3<T>::operator*(T s) const {
+  return {x * s, y * s, z * s};
 }
+
+template <typename T>
+Vec3<T> Vec3<T>::operator/(T s) const {
+  return {x / s, y / s, z / s};
+}
+
+template <typename T>
+bool Vec3<T>::operator==(const Vec3& other) const {
+  T eps = Epsilon<T>::value;
+  return (std::abs(x - other.x) < eps && std::abs(y - other.y) < eps &&
+          std::abs(z - other.z) < eps);
+}
+
+template class Vec3<float>;
+template class Vec3<double>;
 }  // namespace VecMatLib

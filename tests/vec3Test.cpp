@@ -12,19 +12,19 @@ using namespace VecMatLib;
 
 extern double EPS;
 extern void runTest(const char* name, void (*testFunc)());
-Vec3 a(1, 2, 3), b(4, 5, 6);
+Vec3<double> a(1, 2, 3), b(4, 5, 6);
 
 extern bool nearlyEqual(double a, double b);
 
 void testVec3Addition() {
-  Vec3 a(1, 2, 3), b(4, 5, 6);
-  Vec3 result = a + b;
+  Vec3<double> a(1, 2, 3), b(4, 5, 6);
+  Vec3<double> result = a + b;
 
   assert(result.x == 5 && result.y == 7 && result.z == 9);
 }
 
 void testVec3Subtraction() {
-  Vec3 result = a - b;
+  Vec3<double> result = a - b;
 
   assert(result.x == -3 && result.y == -3 && result.z == -3);
 }
@@ -35,7 +35,7 @@ void testVec3Dot() {
 }
 
 void testVec3Cross() {
-  Vec3 result = a.cross(b);
+  Vec3<double> result = a.cross(b);
   assert(result.x == -3 && result.y == 6 && result.z == -3);
 }
 
@@ -53,7 +53,7 @@ void runVec3Tests() {
   runTest("vec 3 cross test", testVec3Cross);
   runTest("vec3 distance function test", testVec3Dist);
 
-  const Vec3 big(1e9, 1e9, 1e9);
+  const Vec3<double> big(1e9, 1e9, 1e9);
 
   assert(nearlyEqual(a.dot(b), b.dot(a)));
   assert(big.magnitude() > 0);

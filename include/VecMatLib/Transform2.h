@@ -8,37 +8,38 @@
 #include <numbers>
 
 namespace VecMatLib {
+template<typename T>
 class Transform2 {
  private:
-  Mat2 matrix_;
-  Vec2 translation_;
+  Mat2<T> matrix_;
+  Vec2<T> translation_;
 
  public:
-  Transform2(double m00, double m01, double m10, double m11, double tx,
-             double ty)
+  Transform2(T m00, T m01, T m10, T m11, T tx,
+             T ty)
       : matrix_(m00, m01, m10, m11), translation_(tx, ty) {}
 
-  Transform2(const double tx, const double ty)
+  Transform2(const T tx, const T ty)
       : matrix_(), translation_(tx, ty) {}
-  Transform2(const Mat2 matrix, const Vec2 translation)
+  Transform2(const Mat2<T> matrix, const Vec2<T> translation)
       : matrix_(matrix), translation_(translation) {}
 
   Transform2() : matrix_(), translation_(0, 0) {}
 
-  Transform2& rotate(double angle);
-  Transform2& translate(const Vec2& translation);
-  Transform2& scale(double sx, double sy);
+  Transform2& rotate(T angle);
+  Transform2& translate(const Vec2<T>& translation);
+  Transform2& scale(T sx, T sy);
   Transform2& combine(const Transform2& other);
 
   [[nodiscard]] static Transform2 identity();
-  [[nodiscard]] static Transform2 translation(const Vec2& t);
-  [[nodiscard]] static Transform2 rotation(double radians);
-  [[nodiscard]] static Transform2 scaling(double sx, double sy);
+  [[nodiscard]] static Transform2 translation(const Vec2<T>& t);
+  [[nodiscard]] static Transform2 rotation(T radians);
+  [[nodiscard]] static Transform2 scaling(T sx, T sy);
 
   [[nodiscard]] Transform2 inverse();
 
   Transform2 operator*(const Transform2& other) const;
-  Vec2 operator*(const Vec2& v) const;
+  Vec2<T> operator*(const Vec2<T>& v) const;
 };
 }  // namespace VecMatLib
 #endif  // VECMATLIB_TRANSFORM2_H

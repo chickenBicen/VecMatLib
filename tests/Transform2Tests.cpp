@@ -11,52 +11,52 @@ extern void runTest(const char* name, void (*testFunc)());
 extern double EPS;
 
 void testIdentity() {
-  VecMatLib::Transform2 t;
+  VecMatLib::Transform2<double> t;
 
-  VecMatLib::Vec2 v(3, 2);
-  VecMatLib::Vec2 result = t * v;
+  VecMatLib::Vec2<double> v(3, 2);
+  VecMatLib::Vec2<double> result = t * v;
 
   assert(nearlyEqual(v.x, result.x) && nearlyEqual(v.y, result.y));
 }
 
 void testTranslation() {
-  VecMatLib::Transform2 t = VecMatLib::Transform2::translation({2, 3});
+  VecMatLib::Transform2<double> t = VecMatLib::Transform2<double>::translation({2, 3});
 
-  VecMatLib::Vec2 v(1, 1);
-  VecMatLib::Vec2 result = t * v;
+  VecMatLib::Vec2<double> v(1, 1);
+  VecMatLib::Vec2<double> result = t * v;
 
   assert(nearlyEqual(result.x, 3) && nearlyEqual(result.y, 4));
 }
 
 void testScale() {
-  VecMatLib::Transform2 t = VecMatLib::Transform2::scaling(2, 3);
-  VecMatLib::Vec2 v(1, 2);
+  VecMatLib::Transform2<double> t = VecMatLib::Transform2<double>::scaling(2, 3);
+  VecMatLib::Vec2<double> v(1, 2);
 
-  VecMatLib::Vec2 result = t * v;
+  VecMatLib::Vec2<double> result = t * v;
 
   assert(nearlyEqual(result.x, 2) && nearlyEqual(result.y, 6));
 }
 
 void testRotation() {
-  VecMatLib::Transform2 r =
-      VecMatLib::Transform2::rotation(std::numbers::pi / 2);
-  VecMatLib::Vec2 v(1, 0);
-  VecMatLib::Vec2 result = r * v;
+  VecMatLib::Transform2<double> r =
+      VecMatLib::Transform2<double>::rotation(std::numbers::pi / 2);
+  VecMatLib::Vec2<double> v(1, 0);
+  VecMatLib::Vec2<double> result = r * v;
 
   assert(nearlyEqual(result.x, 0) && nearlyEqual(result.y, 1));
 }
 
 void testOrder() {
-  VecMatLib::Transform2 translate;
+  VecMatLib::Transform2<double> translate;
   translate.translate({1, 0});
 
-  VecMatLib::Transform2 rotate;
+  VecMatLib::Transform2<double> rotate;
   rotate.rotate(std::numbers::pi / 2);
 
-  VecMatLib::Vec2 v(1, 0);
+  VecMatLib::Vec2<double> v(1, 0);
 
-  VecMatLib::Vec2 result1 = (rotate * translate) * v;
-  VecMatLib::Vec2 result2 = (translate * rotate) * v;
+  VecMatLib::Vec2<double> result1 = (rotate * translate) * v;
+  VecMatLib::Vec2<double> result2 = (translate * rotate) * v;
 
   // Should NOT be equal
   assert(!(std::abs(result1.x - result2.x) < 1e-5 &&

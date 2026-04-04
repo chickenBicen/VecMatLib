@@ -10,12 +10,13 @@
 #include "../VecMatLib/Vec2.h"
 
 namespace VecMatLib {
-class Mat2 {
- private:
- public:
-  std::array<std::array<double, 2>, 2> mat_;
 
-  Mat2(double m00, double m01, double m10, double m11) {
+template <typename T>
+class Mat2 {
+ public:
+  std::array<std::array<T, 2>, 2> mat_;
+
+  Mat2(T m00, T m01, T m10, T m11) {
     mat_[0][0] = m00;
     mat_[0][1] = m01;
     mat_[1][0] = m10;
@@ -29,7 +30,7 @@ class Mat2 {
     mat_[1][1] = 1;
   }
 
-  Mat2(double mat[4]) {
+  Mat2(T mat[4]) {
     mat_[0][0] = mat[0];
     mat_[0][1] = mat[1];
     mat_[1][0] = mat[2];
@@ -41,7 +42,7 @@ class Mat2 {
     return m;
   }
 
-  [[nodiscard]] double det() const;
+  [[nodiscard]] T det() const;
 
   [[nodiscard]] Mat2 inversed() const;
 
@@ -50,8 +51,8 @@ class Mat2 {
   Mat2 operator+(const Mat2& m) const;
   Mat2 operator-(const Mat2& m) const;
   Mat2 operator*(const Mat2& m) const;
-  Vec2 operator*(const Vec2& v) const;
-  Mat2 operator*(double s) const;
+  Vec2<T> operator*(const Vec2<T>& v) const;
+  Mat2 operator*(T s) const;
   bool operator==(const Mat2& m) const;
 };
 }  // namespace VecMatLib
