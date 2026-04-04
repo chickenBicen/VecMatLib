@@ -6,6 +6,7 @@
 #define VECMATLIB_VEC3_H
 
 #include <numbers>
+
 #include "Vec2.h"
 
 namespace VecMatLib {

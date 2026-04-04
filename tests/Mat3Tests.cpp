@@ -4,8 +4,8 @@
 #include <cassert>
 #include <iostream>
 
-#include "../include/VecMatLib/Mat3.h"
-#include "../include/VecMatLib/Vec3.h"
+#include "../include/VecMatLib/Core/Mat3.h"
+#include "../include/VecMatLib/Core/Vec3.h"
 
 using namespace VecMatLib;
 

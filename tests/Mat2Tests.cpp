@@ -6,7 +6,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "VecMatLib/Mat2.h"
+#include "../include/VecMatLib/Core/Mat2.h"
 extern double EPS;
 extern void runTest(const char* name, void (*testFunc)());
 extern bool nearlyEqual(const double a, const double b);

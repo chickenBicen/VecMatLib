@@ -5,9 +5,9 @@
 #include <cmath>
 #include <iostream>
 
-#include "../include/VecMatLib/Vec3.h"
-#include "VecMatLib/Mat2.h"
-#include "VecMatLib/utils.h"
+#include "../include/VecMatLib/Core/Mat2.h"
+#include "../include/VecMatLib/Core/Vec3.h"
+#include "../include/VecMatLib/Math/utils.h"
 using namespace VecMatLib;
 
 extern double EPS;

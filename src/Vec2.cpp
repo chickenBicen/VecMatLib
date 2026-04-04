@@ -1,4 +1,4 @@
-#include "../include/VecMatLib/Vec2.h"
+#include "../include/VecMatLib/Core/Vec2.h"
 
 #include <cmath>
 

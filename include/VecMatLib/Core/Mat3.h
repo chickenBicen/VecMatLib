@@ -68,8 +68,6 @@ class Mat3 {
   Mat3 operator*(const T scalar) const;
   Mat3 operator/(T scalar) const;
 
-  Mat3 operator+(const Mat3& other) const;
-  Mat3 operator-(const Mat3& other) const;
   bool operator==(const Mat3& other) const;
 };
 }  // namespace VecMatLib

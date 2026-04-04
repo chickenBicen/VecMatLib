@@ -4,9 +4,10 @@
 
 #ifndef VECMATLIB_TRANSFORM3_H
 #define VECMATLIB_TRANSFORM3_H
-#include "Mat3.h"
-#include "Quaternion.h"
 #include <numbers>
+
+#include "../Core/Mat3.h"
+#include "../Core/Quaternion.h"
 
 namespace VecMatLib {
 

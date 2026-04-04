@@ -2,11 +2,11 @@
 // Created by chice on 3/24/2026.
 //
 
-#include "../include/VecMatLib/Mat2.h"
+#include "../include/VecMatLib/Core/Mat2.h"
 
 #include <iostream>
 
-#include "../include/VecMatLib/Vec2.h"
+#include "../include/VecMatLib/Core/Vec2.h"
 
 namespace VecMatLib {
 template <typename T>

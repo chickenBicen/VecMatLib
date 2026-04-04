@@ -13,6 +13,7 @@ add_library(VecMatLib
         src/Mat3.cpp
         src/Transform3.cpp
         src/Quaternion.cpp
+        src/Plane.cpp
 )
 
 target_include_directories(VecMatLib

@@ -1,7 +1,7 @@
 //
 // Created by chice on 4/3/2026.
 //
-#include <../include/VecMatLib/utils.h>
+#include <../include/VecMatLib/Math/utils.h>
 
 #include <cassert>
 

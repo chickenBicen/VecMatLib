@@ -4,7 +4,7 @@
 #include <cassert>
 #include <iostream>
 
-#include "../include/VecMatLib/Transform3.h"
+#include "../include/VecMatLib/Math/Transform3.h"
 
 using namespace VecMatLib;
 

@@ -4,8 +4,9 @@
 
 #ifndef VECMATLIB_TRANSFORM2_H
 #define VECMATLIB_TRANSFORM2_H
-#include "Mat2.h"
 #include <numbers>
+
+#include "../Core/Mat2.h"
 
 namespace VecMatLib {
 template<typename T>

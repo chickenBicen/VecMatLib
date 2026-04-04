@@ -2,9 +2,9 @@
 // Created by chice on 3/29/2026.
 //
 
-#include "../include/VecMatLib/Mat3.h"
+#include "../include/VecMatLib/Core/Mat3.h"
 
-#include "VecMatLib/Mat2.h"
+#include "../include/VecMatLib/Core/Mat2.h"
 
 namespace VecMatLib {
 template <typename T>

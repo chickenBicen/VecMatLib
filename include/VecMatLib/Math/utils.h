@@ -3,9 +3,9 @@
 #include <cmath>
 #include <numbers>
 
-#include "Vec2.h"
-#include "Vec3.h"
-#include "mat2.h"
+#include "../Core/Mat2.h"
+#include "../Core/Vec2.h"
+#include "../Core/Vec3.h"
 
 namespace VecMatLib {
 
@@ -62,5 +62,6 @@ requires requires(Vec a, Vec b, double s) {
 Vec lerp(Vec& a, Vec& b, double t ) {
   return a + ((b - a) * t);
 }
+
 
 }  // namespace VecMatLib

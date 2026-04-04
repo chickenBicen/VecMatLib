@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "../include/VecMatLib/Vec2.h"
+#include "../include/VecMatLib/Core/Vec2.h"
 
 using namespace VecMatLib;
 

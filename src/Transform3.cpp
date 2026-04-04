@@ -2,7 +2,7 @@
 // Created by chice on 3/29/2026.
 //
 
-#include "../include/VecMatLib/Transform3.h"
+#include "../include/VecMatLib/Math/Transform3.h"
 
 namespace VecMatLib {
 

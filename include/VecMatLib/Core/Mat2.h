@@ -7,7 +7,7 @@
 #include <array>
 #include <numbers>
 
-#include "../VecMatLib/Vec2.h"
+#include "Vec2.h"
 
 namespace VecMatLib {
 

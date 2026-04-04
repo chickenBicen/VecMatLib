@@ -1,7 +1,7 @@
 //
 // Created by chice on 3/23/2026.
 //
-#include "../include/VecMatLib/Vec3.h"
+#include "../include/VecMatLib/Core/Vec3.h"
 
 #include <cmath>
 
@@ -39,6 +39,7 @@ template <typename T>
 Vec3<T> Vec3<T>::operator-(const Vec3& other) const {
   return {x - other.x, y - other.y, z - other.z};
 }
+
 template <typename T>
 Vec3<T> Vec3<T>::operator*(T s) const {
   return {x * s, y * s, z * s};
