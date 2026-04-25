@@ -59,19 +59,28 @@ install(EXPORT VecMatLibTargets
         NAMESPACE VecMatLib::
         DESTINATION lib/cmake/VecMatLib
 )
+# -------------------------
+# Tests (optional)
+# -------------------------
+option(BUILD_TESTS "Build tests" ON)
 
-add_executable(tests
-        tests/main.cpp
-        tests/vec2Test.cpp
-        tests/vec3Test.cpp
-        tests/Mat2Tests.cpp
-        tests/Transform2Tests.cpp
-        tests/Mat3Tests.cpp
-        tests/Transform3Tests.cpp
-        tests/UtilitiesTests.cpp
+if(BUILD_TESTS)
+    enable_testing()
 
-)
+    add_executable(tests
+            tests/main.cpp
+            tests/vec2Test.cpp
+            tests/vec3Test.cpp
+            tests/Mat2Tests.cpp
+            tests/Transform2Tests.cpp
+            tests/Mat3Tests.cpp
+            tests/Transform3Tests.cpp
+            tests/UtilitiesTests.cpp
+    )
 
-target_link_libraries(tests VecMatLib)
+    target_link_libraries(tests PRIVATE VecMatLib)
+
+    add_test(NAME VecMatTests COMMAND tests)
+endif()
 
 
