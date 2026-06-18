@@ -4,7 +4,7 @@ project(VecMatLib)
 set(CMAKE_CXX_STANDARD 20)
 
 
-add_library(VecMatLib
+add_library(VecMatLib STATIC
         src/vec2.cpp
         src/utils.cpp
         src/vec3.cpp
